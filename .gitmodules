@@ -1,3 +1,0 @@
-[submodule "Modules/Drivers"]
-	path = Modules/Drivers
-	url = https://github.com/karim029/ATmega32
