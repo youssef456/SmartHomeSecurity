@@ -4,15 +4,21 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../DIO_Program.c \
 ../Eeprom_Program.c \
+../USER_MANAGER_Program.c \
 ../main.c 
 
 OBJS += \
+./DIO_Program.o \
 ./Eeprom_Program.o \
+./USER_MANAGER_Program.o \
 ./main.o 
 
 C_DEPS += \
+./DIO_Program.d \
 ./Eeprom_Program.d \
+./USER_MANAGER_Program.d \
 ./main.d 
 
 
