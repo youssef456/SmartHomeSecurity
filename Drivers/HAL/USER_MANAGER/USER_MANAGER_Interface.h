@@ -14,9 +14,20 @@
 #define USER_LENGTH 6
 #define USER_DATA_LENGTH (PASS_LENGTH + USER_LENGTH)
 #define EEPROM_ADDRESS 0x00
-//global vars
 
+// to store number of current users
+// check this variable only after calling the retrieveUsers function
 u8 numOfUsers;
+
+typedef enum{
+
+	deleteSuccess,
+	userFound,
+	userNotFound,
+	userCreated,
+	userLimitExceeded
+
+}status_t;
 
 typedef enum{
 	true,
@@ -25,8 +36,8 @@ typedef enum{
 
 typedef struct {
 
-	u8 userName[2];
-	u8 passWord[2];
+	u8 userName[USER_LENGTH];
+	u8 passWord[PASS_LENGTH];
 	u8 userId;
 	bool isActive;
 
@@ -37,7 +48,7 @@ userData allUsers[MAXUSERS];
 
 
 void retreiveUsers();
-void createUser(u8 index ,userData* newUser);
-void fetchUser(u8 index, userData* user);
-void deleteUser(u8 index);
+status_t createUser(userData* newUser);
+status_t fetchUser( userData* user);
+status_t deleteUser(userData* user);
 #endif /* USER_MANAGER_INTERFACE_H_ */
