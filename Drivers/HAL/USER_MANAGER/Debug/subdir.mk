@@ -6,20 +6,17 @@
 C_SRCS += \
 ../DIO_Program.c \
 ../Eeprom_Program.c \
-../USER_MANAGER_Program.c \
-../main.c 
+../USER_MANAGER_Program.c 
 
 OBJS += \
 ./DIO_Program.o \
 ./Eeprom_Program.o \
-./USER_MANAGER_Program.o \
-./main.o 
+./USER_MANAGER_Program.o 
 
 C_DEPS += \
 ./DIO_Program.d \
 ./Eeprom_Program.d \
-./USER_MANAGER_Program.d \
-./main.d 
+./USER_MANAGER_Program.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
