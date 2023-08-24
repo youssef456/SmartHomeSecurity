@@ -5,13 +5,15 @@
  *      Author: karim
  */
 
+#include <util/delay.h>
+
 //STD LIBs
 #include "../../../Libraries/bit_calc.h"
 #include "../../../Libraries/STD_Types.h"
 
 //Private MCAL
-#include "Eeprom_Interface.h"
-#include "Eeprom_Private.h"
+#include "../../MCAL/INTERNAL_EEPROM/Eeprom_Interface.h"
+#include "../../MCAL/INTERNAL_EEPROM/Eeprom_Private.h"
 
 
 #define MAX_EEPROM 1024
@@ -35,11 +37,15 @@ void eepromWriteByte(u16 copy_u16_Address, u8 copy_u8_Data){
 	EEAR = copy_u16_Address;
 	EEDR = copy_u8_Data;
 
+
+
 	//Enable EEprom Master Write
 	EECR = (1<<EEMWE);
+	EECR = (1<<EEWE);
 
 	//enable Eeprom Write within 4 clock cycles
-	EECR = (1<<EEWE);
+	//EECR |= (1<<EEWE);
+
 
 }
 
@@ -90,7 +96,7 @@ eepromResult eepromReadBytes(u16 copy_u16_Address,u8* copy_pu8_Data,u16 copy_u16
 
 	eepromResult result;
 
-	if((copy_u16_Address + copy_u16_Length) <MAX_EEPROM){
+	//if((copy_u16_Address + copy_u16_Length) <MAX_EEPROM){
 
 		for(u16 i = 0; i < copy_u16_Length; i++){
 
@@ -98,11 +104,11 @@ eepromResult eepromReadBytes(u16 copy_u16_Address,u8* copy_pu8_Data,u16 copy_u16
 
 		}
 
-		result = eepromWriteOK;
-	}else{
+	//	result = eepromWriteOK;
+	//}else{
 
-		result = eepromAddressOverFlow;
-	}
+	//	result = eepromAddressOverFlow;
+//	}
 
 	return result;
 }
