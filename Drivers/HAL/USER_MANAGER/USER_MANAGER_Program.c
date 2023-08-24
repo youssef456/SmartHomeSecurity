@@ -38,7 +38,7 @@ status_t deleteUser(userData* user){
 	return deleteStatus;
 }
 
-void retreiveUsers(){
+void retrieveUsers(){
 
 	//reset the num of users to 0
 	numOfUsers = 0;

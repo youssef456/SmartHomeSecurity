@@ -47,7 +47,7 @@ typedef struct {
 userData allUsers[MAXUSERS];
 
 
-void retreiveUsers();
+void retrieveUsers();
 status_t createUser(userData* newUser);
 status_t fetchUser( userData* user);
 status_t deleteUser(userData* user);
