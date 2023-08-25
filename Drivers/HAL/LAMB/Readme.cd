@@ -1,0 +1,57 @@
+
+## Description
+
+The LAMB driver provides a software interface for controlling and managing a set of Lamb devices. Each Lamb is associated with a specific port and pin on a microcontroller. This driver allows you to initialize, turn on, and turn off individual Lambs.
+
+### Initialization
+
+To initialize a Lamb configuration, use the following function:
+
+```c
+void LAMB_u8_INIT(u8 LambIndex, u8 Copy_u8_Lamb_Port, u8 Copy_u8_Lamb_Pin);
+```
+
+- `LambIndex`: The index of the Lamb configuration to be initialized (0 to `MAX_LAMBS`).
+- `Copy_u8_Lamb_Port`: The port number where the Lamb is connected.
+- `Copy_u8_Lamb_Pin`: The pin number within the port for the Lamb.
+
+Example usage:
+
+```c
+LAMB_u8_INIT(0, PORTA, PIN0);
+```
+
+### Turning On
+
+To turn on a specific Lamb, use the following function:
+
+```c
+void LAMB_u8_Turn_ON(u8 LambIndex);
+```
+
+- `LambIndex`: The index of the Lamb to be turned on (0 to `MAX_LAMBS`).
+
+Example usage:
+
+```c
+LAMB_u8_Turn_ON(0);
+```
+
+### Turning Off
+
+To turn off a specific Lamb, use the following function:
+
+```c
+void LAMB_u8_Turn_OFF(u8 LambIndex);
+```
+
+- `LambIndex`: The index of the Lamb to be turned off (0 to `MAX_LAMBS`).
+
+Example usage:
+
+```c
+LAMB_u8_Turn_OFF(0);
+```
+
+---
+This driver provides an interface to control Lamb devices. Ensure that you follow the proper initialization sequence and provide correct configuration values for successful operation.
