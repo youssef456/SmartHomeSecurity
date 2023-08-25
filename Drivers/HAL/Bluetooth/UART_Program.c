@@ -5,13 +5,13 @@
  *      Author: karim
  */
 
-#include "STD_Types.h"
-#include "bit_calc.h"
+#include "../../../Libraries/STD_Types.h"
+#include "../../../Libraries/bit_calc.h"
 
-#include "DIO_Interface.h"
-#include "UART_Private.h"
-#include "UART_Interface.h"
-#include "UART_Config.h"
+#include "../../MCAL/DIO/DIO_Interface.h"
+#include "../../MCAL/UART/UART_Private.h"
+#include "../../MCAL/UART/UART_Interface.h"
+#include "../../MCAL/UART/UART_Config.h"
 
 
 void (*callback_func[3])(void);
@@ -192,23 +192,12 @@ void UART_Transmit_String(u8* copy_string){
 }
 
 void UART_Receive_String(u8* arr){
-
-	u8 i =0;
-
-
-		arr[i] = UART_Receive_char();
-
+	u8 i = 0;
+	arr[i] = UART_Receive_char();
 	while(arr[i]){
-
 		arr[i] = UART_Receive_char();
 		i++;
-
-
 	}
-
-
-
-
 }
 
 // RX Complete

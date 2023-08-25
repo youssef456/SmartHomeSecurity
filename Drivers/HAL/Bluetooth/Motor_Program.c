@@ -4,9 +4,8 @@
   Date: August 24, 2023
 */
 
-#include "Motor_Interface.h"
-#include "../../MCAL/DIO/DIO_Interface.h"
-#include "../../MCAL/TIMERS/TIMERS_Interface.h"
+# include "../Motor/Motor_Interface.h"
+# include "../../MCAL/DIO/DIO_Interface.h"
 
 void motorInit(){
 	DIO_void_set_pin_dir(PORTD,PIN0,OUTPUT);

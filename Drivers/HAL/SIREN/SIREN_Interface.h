@@ -11,7 +11,7 @@
 
 #ifndef SIREN_INTERFACE_H_
 #define SIREN_INTERFACE_H_
-
+#include "../../../Libraries/STD_Types.h"
 /* Functions Prototypes */
 
 void SIREN_void_INIT(u8 Copy_u8_Siren_Port, u8 Copy_u8_Siren_Pin);

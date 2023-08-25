@@ -7,6 +7,7 @@
 
 #ifndef UART_INTERFACE_H_
 #define UART_INTERFACE_H_
+#include "../../../Libraries/STD_Types.h"
 
 #define NULL ((void*)0)
 
