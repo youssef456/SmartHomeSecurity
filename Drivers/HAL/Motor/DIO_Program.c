@@ -10,12 +10,12 @@
 /**********************************************************************/
 
 /* Standard Library */
-#include "STD_Types.h"
-#include "bit_calc.h"
+#include "../../../Libraries/STD_Types.h"
+#include "../../../Libraries/bit_calc.h"
 
 /* Private libraries */
-#include "DIO_Registers.h"
-#include "DIO_Interface.h"
+#include "../../MCAL/DIO/DIO_Registers.h"
+#include "../../MCAL/DIO/DIO_Interface.h"
 
 
 /* Global Variables */

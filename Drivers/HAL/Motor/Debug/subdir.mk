@@ -5,15 +5,21 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../DIO_Program.c \
-../Motor_Program.c 
+../Motor_Program.c \
+../TIMERS_Program.c \
+../main.c 
 
 OBJS += \
 ./DIO_Program.o \
-./Motor_Program.o 
+./Motor_Program.o \
+./TIMERS_Program.o \
+./main.o 
 
 C_DEPS += \
 ./DIO_Program.d \
-./Motor_Program.d 
+./Motor_Program.d \
+./TIMERS_Program.d \
+./main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
