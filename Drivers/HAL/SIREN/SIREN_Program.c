@@ -28,6 +28,7 @@ static u8 sirenPort, sirenPin;
 
 
 
+
 static void Siren_Timer(void){
     /*
      * The Siren_Timer function is an internal callback function used
