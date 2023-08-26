@@ -24,7 +24,6 @@
 #include "TIMERS_Private.h"
 
 // Static variables to store siren port and pin
-
 static u8 sirenPort, sirenPin;
 
 
