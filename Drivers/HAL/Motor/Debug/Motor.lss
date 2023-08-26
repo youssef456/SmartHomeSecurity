@@ -924,10 +924,10 @@ void motorTurnRight(){
  5b4:	83 e0       	ldi	r24, 0x03	; 3
  5b6:	60 e0       	ldi	r22, 0x00	; 0
  5b8:	0e 94 9d 01 	call	0x33a	; 0x33a <DIO_void_set_pin>
-	DIO_void_set_pin(PORTD,1);
+	DIO_void_clear_pin(PORTD,1);
  5bc:	83 e0       	ldi	r24, 0x03	; 3
  5be:	61 e0       	ldi	r22, 0x01	; 1
- 5c0:	0e 94 9d 01 	call	0x33a	; 0x33a <DIO_void_set_pin>
+ 5c0:	0e 94 cd 01 	call	0x39a	; 0x39a <DIO_void_clear_pin>
 
 }
  5c4:	cf 91       	pop	r28
@@ -941,13 +941,13 @@ void motorTurnLeft(){
  5cc:	cf 93       	push	r28
  5ce:	cd b7       	in	r28, 0x3d	; 61
  5d0:	de b7       	in	r29, 0x3e	; 62
-	DIO_void_set_pin(PORTD,1);
+	DIO_void_clear_pin(PORTD,0);
  5d2:	83 e0       	ldi	r24, 0x03	; 3
- 5d4:	61 e0       	ldi	r22, 0x01	; 1
- 5d6:	0e 94 9d 01 	call	0x33a	; 0x33a <DIO_void_set_pin>
-	DIO_void_set_pin(PORTD,0);
+ 5d4:	60 e0       	ldi	r22, 0x00	; 0
+ 5d6:	0e 94 cd 01 	call	0x39a	; 0x39a <DIO_void_clear_pin>
+	DIO_void_set_pin(PORTD,1);
  5da:	83 e0       	ldi	r24, 0x03	; 3
- 5dc:	60 e0       	ldi	r22, 0x00	; 0
+ 5dc:	61 e0       	ldi	r22, 0x01	; 1
  5de:	0e 94 9d 01 	call	0x33a	; 0x33a <DIO_void_set_pin>
 
 }
@@ -961,14 +961,14 @@ void StopMotor(){
  5ea:	cf 93       	push	r28
  5ec:	cd b7       	in	r28, 0x3d	; 61
  5ee:	de b7       	in	r29, 0x3e	; 62
-	DIO_void_set_pin(PORTD,0);
+	DIO_void_clear_pin(PORTD,0);
  5f0:	83 e0       	ldi	r24, 0x03	; 3
  5f2:	60 e0       	ldi	r22, 0x00	; 0
- 5f4:	0e 94 9d 01 	call	0x33a	; 0x33a <DIO_void_set_pin>
-	DIO_void_set_pin(PORTD,0);
+ 5f4:	0e 94 cd 01 	call	0x39a	; 0x39a <DIO_void_clear_pin>
+	DIO_void_clear_pin(PORTD,1);
  5f8:	83 e0       	ldi	r24, 0x03	; 3
- 5fa:	60 e0       	ldi	r22, 0x00	; 0
- 5fc:	0e 94 9d 01 	call	0x33a	; 0x33a <DIO_void_set_pin>
+ 5fa:	61 e0       	ldi	r22, 0x01	; 1
+ 5fc:	0e 94 cd 01 	call	0x39a	; 0x39a <DIO_void_clear_pin>
 }
  600:	cf 91       	pop	r28
  602:	df 91       	pop	r29
@@ -980,9 +980,9 @@ void BreakMotor(){
  608:	cf 93       	push	r28
  60a:	cd b7       	in	r28, 0x3d	; 61
  60c:	de b7       	in	r29, 0x3e	; 62
-	DIO_void_set_pin(PORTD,1);
+	DIO_void_set_pin(PORTD,0);
  60e:	83 e0       	ldi	r24, 0x03	; 3
- 610:	61 e0       	ldi	r22, 0x01	; 1
+ 610:	60 e0       	ldi	r22, 0x00	; 0
  612:	0e 94 9d 01 	call	0x33a	; 0x33a <DIO_void_set_pin>
 	DIO_void_set_pin(PORTD,1);
  616:	83 e0       	ldi	r24, 0x03	; 3
