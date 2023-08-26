@@ -13,7 +13,7 @@
 
 #ifndef DIO_INTERFACE_H_
 #define DIO_INTERFACE_H_
-
+#include "../../../Libraries/STD_Types.h"
 /* Define Ports and pins */
 
 #define PORTA 0
