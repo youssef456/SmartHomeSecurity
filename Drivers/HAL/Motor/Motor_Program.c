@@ -16,20 +16,20 @@ void motorInit(){
 
 void motorTurnRight(){
 	DIO_void_set_pin(PORTD,0);
-	DIO_void_set_pin(PORTD,1);
+	DIO_void_clear_pin(PORTD,1);
 
 }
 
 void motorTurnLeft(){
+	DIO_void_clear_pin(PORTD,0);
 	DIO_void_set_pin(PORTD,1);
-	DIO_void_set_pin(PORTD,0);
 
 }
 void StopMotor(){
-	DIO_void_set_pin(PORTD,0);
-	DIO_void_set_pin(PORTD,0);
+	DIO_void_clear_pin(PORTD,0);
+	DIO_void_clear_pin(PORTD,1);
 }
 void BreakMotor(){
-	DIO_void_set_pin(PORTD,1);
+	DIO_void_set_pin(PORTD,0);
 	DIO_void_set_pin(PORTD,1);
 }
