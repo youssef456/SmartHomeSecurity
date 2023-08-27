@@ -18,13 +18,15 @@
 #include "SIREN_Interface.h"
 
 //MCAL
-#include "../DIO/DIO_Interface.h"
-#include "../TIMERS/TIMERS_Config.h"
-#include "../TIMERS/TIMERS_Interface.h"
-#include "../TIMERS/TIMERS_Private.h"
+
+#include "DIO_Interface.h"
+#include "TIMERS_Config.h"
+#include "TIMERS_Interface.h"
+#include "TIMERS_Private.h"
 
 // Static variables to store siren port and pin
 static u8 sirenPort, sirenPin;
+
 
 
 
