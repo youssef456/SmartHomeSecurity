@@ -15,7 +15,7 @@
 #include "../../MCAL/DIO/DIO_Registers.h"
 
 //private
-#include "../../MCAL/TIMERS/TIMERS_Config.h"
+#include "../../HAL/MOTOR/TIMERS_Config.h"
 #include "../../MCAL/TIMERS/TIMERS_Interface.h"
 #include "../../MCAL/TIMERS/TIMERS_Private.h"
 

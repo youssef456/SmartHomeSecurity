@@ -11,6 +11,17 @@
 #ifndef BLUETOOTH_INTERFACE_H_
 #define BLUETOOTH_INTERFACE_H_
 
-void userManager(u8 username[USER_LENGTH], u8 password[PASS_LENGTH], u8 action);
+typedef enum{
+	transmitionSuccess,
+	transmitionFailed
+
+}transmitionstatus;
+
+
+#define null ((void *) 0)
 void BluetoothConnection();
+void Bluetoothsend();
+void BluetoothInit();
+
+
 #endif /* BLUETOOTH_INTERFACE_H_ */

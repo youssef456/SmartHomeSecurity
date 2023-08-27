@@ -13,7 +13,9 @@ void motorInit(){
 	DIO_void_set_pin_dir(PORTD,PIN1,OUTPUT);
 
 }
+void motorTimer(){
 
+}
 void motorTurnRight(){
 	DIO_void_set_pin(PORTD,0);
 	DIO_void_clear_pin(PORTD,1);
