@@ -5,12 +5,14 @@
  *      Author: youse
  */
 
-#include "../USER_MANAGER/USER_MANAGER_Interface.h"
-#include "../../../Libraries/STD_Types.h"
+
 
 #ifndef BLUETOOTH_INTERFACE_H_
 #define BLUETOOTH_INTERFACE_H_
 
-void userManager(u8 username[USER_LENGTH], u8 password[PASS_LENGTH], u8 action);
-void BluetoothConnection();
+
+void bluetoothInit();
+void bluetoothSendMessage(u8* copy_u8_msg);
+void bluetoothReceiveMessage(u8* arr , u8 size);
+
 #endif /* BLUETOOTH_INTERFACE_H_ */
