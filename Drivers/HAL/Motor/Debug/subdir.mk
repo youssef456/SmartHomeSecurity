@@ -5,28 +5,25 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../DIO_Program.c \
-../Motor_Program.c \
-../TIMERS_Program.c \
-../main.c 
+../MOTOR_Program.c \
+../TIMERS_Program.c 
 
 OBJS += \
 ./DIO_Program.o \
-./Motor_Program.o \
-./TIMERS_Program.o \
-./main.o 
+./MOTOR_Program.o \
+./TIMERS_Program.o 
 
 C_DEPS += \
 ./DIO_Program.d \
-./Motor_Program.d \
-./TIMERS_Program.d \
-./main.d 
+./MOTOR_Program.d \
+./TIMERS_Program.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-%.o: ../%.c subdir.mk
+%.o: ../%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
