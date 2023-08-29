@@ -7,17 +7,17 @@
 
 
 // standard libs
-#include "../../../Libraries/STD_Types.h"
-#include "../../../Libraries/bit_calc.h"
+#include "Libraries/STD_Types.h"
+#include "Libraries/bit_calc.h"
 
 //MCAL
-#include "../../MCAL/DIO/DIO_Interface.h"
-#include "../../MCAL/DIO/DIO_Registers.h"
+#include "DIO_Interface.h"
+#include "DIO_Registers.h"
 
 //private
-#include "../../MCAL/TIMERS/TIMERS_Config.h"
-#include "../../MCAL/TIMERS/TIMERS_Interface.h"
-#include "../../MCAL/TIMERS/TIMERS_Private.h"
+#include "TIMERS_Config.h"
+#include "TIMERS_Interface.h"
+#include "TIMERS_Private.h"
 
 
 static void(*callback_func[8])(void);
@@ -51,8 +51,8 @@ void TMR0_prescallar(){
 
 #elif TMR0_PRESCALE == TMR0_CLK_8
 
-	set_Bit(TCCR0,CS01);
-	clear_Bit(TCCR0,CS00);
+	clear_Bit(TCCR0,CS01);
+	set_Bit(TCCR0,CS00);
 	clear_Bit(TCCR0,CS02);
 
 #elif TMR0_PRESCALE == TMR0_CLK_64
@@ -162,7 +162,7 @@ void TMR0_mode(){
 	set_Bit(TCCR0,WGM01);
 	clear_Bit(TCCR0,WGM00);
 
-#elif TMR0 == FAST_PWM
+#elif TMR0_MODE == FAST_PWM
 
 	set_Bit(TCCR0,WGM00);
 	set_Bit(TCCR0,WGM01);

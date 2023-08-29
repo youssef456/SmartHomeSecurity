@@ -28,58 +28,54 @@ endif
 
 -include ../makefile.defs
 
-OPTIONAL_TOOL_DEPS := \
-$(wildcard ../makefile.defs) \
-$(wildcard ../makefile.init) \
-$(wildcard ../makefile.targets) \
-
-
-BUILD_ARTIFACT_NAME := Motor
-BUILD_ARTIFACT_EXTENSION := elf
-BUILD_ARTIFACT_PREFIX :=
-BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
-
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-Motor.lss \
+MOTOR.lss \
+
+FLASH_IMAGE += \
+MOTOR.hex \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: main-build
-
-# Main-build Target
-main-build: Motor.elf secondary-outputs
+all: MOTOR.elf secondary-outputs
 
 # Tool invocations
-Motor.elf: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+MOTOR.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,Motor.map -mmcu=atmega32 -o "Motor.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-gcc -Wl,-Map,MOTOR.map -mmcu=atmega32 -o "MOTOR.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Motor.lss: Motor.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+MOTOR.lss: MOTOR.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S Motor.elf  >"Motor.lss"
+	-avr-objdump -h -S MOTOR.elf  >"MOTOR.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: Motor.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+MOTOR.hex: MOTOR.elf
+	@echo 'Create Flash image (ihex format)'
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex MOTOR.elf  "MOTOR.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+sizedummy: MOTOR.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega32 Motor.elf
+	-avr-size --format=avr --mcu=atmega32 MOTOR.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) Motor.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) MOTOR.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(SIZEDUMMY)
+secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
 
-.PHONY: all clean dependents main-build
+.PHONY: all clean dependents
+.SECONDARY:
 
 -include ../makefile.targets
