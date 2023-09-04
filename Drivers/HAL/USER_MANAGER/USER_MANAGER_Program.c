@@ -5,10 +5,10 @@
  *      Author: karim
  */
 
-#include "../../../Libraries/bit_calc.h"
-#include "../../../Libraries/STD_Types.h"
+#include "bit_calc.h"
+#include "STD_Types.h"
 
-#include "../../../Drivers/MCAL/INTERNAL_EEPROM/Eeprom_Interface.h"
+#include "Eeprom_Interface.h"
 #include "USER_MANAGER_Interface.h"
 
 
@@ -39,6 +39,8 @@ status_t deleteUser(userData* user){
 }
 
 void retrieveUsers(){
+
+
 
 	//reset the num of users to 0
 	numOfUsers = 0;
@@ -75,19 +77,38 @@ status_t createUser(userData* newUser){
 	 */
 		status_t creationStatus;
 
-	if(newUser->userId < MAXUSERS){
+		s8 emptySlot = -1;
 
-		eepromWriteBytes((newUser->userId * sizeof(userData)),(u8*)newUser, sizeof(userData));
-		// user created successfuly
-		creationStatus = userCreated;
-	}else{
+		for(u8 i = 0; i<MAXUSERS; i++){
+			userData user;
+			user.userId = i;
+			fetchUser(&user);
 
-		creationStatus = userLimitExceeded;
-	}
+			//check if there is no user in this eeprom space
+			// if it is empty assign the emptyslot to index i to create user in it
+			if(user.userId != NOT_CREATED && user.isActive != true){
 
-	return creationStatus;
+				emptySlot = i;
+				break;
+			}
+
+		}
+
+		if(emptySlot != -1){
+
+			//write the userdata in this location
+			newUser->userId = emptySlot;
+			newUser->isActive = true;
+			eepromWriteBytes((newUser->userId * sizeof(userData)),(u8*)newUser, sizeof(userData));
+			creationStatus = userCreated;
+			numOfUsers++;
+		}else{
+			creationStatus = userLimitExceeded;
+		}
+
+		return creationStatus;
+
 }
-
 
 status_t fetchUser(userData* user){
 
@@ -112,4 +133,7 @@ status_t fetchUser(userData* user){
 		fetchStatus = userNotFound;
 
 	}
+
+	return fetchStatus;
 }
+
