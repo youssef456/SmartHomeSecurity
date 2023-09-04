@@ -10,14 +10,14 @@
 
 #define NOT_CREATED 255
 #define MAXUSERS 10
-#define PASS_LENGTH 4
-#define USER_LENGTH 6
+#define PASS_LENGTH 5
+#define USER_LENGTH 7
 #define USER_DATA_LENGTH (PASS_LENGTH + USER_LENGTH)
 #define EEPROM_ADDRESS 0x00
 
 // to store number of current users
 // check this variable only after calling the retrieveUsers function
-u8 numOfUsers;
+volatile u8 numOfUsers;
 
 typedef enum{
 
@@ -30,8 +30,10 @@ typedef enum{
 }status_t;
 
 typedef enum{
-	true,
-	false
+	false,
+	true
+
+
 }bool;
 
 typedef struct {
